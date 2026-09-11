@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate scripts
+        run: |
+          python3 -m py_compile validate.py
+          bash -n backup.sh
+          bash -n restore.sh
+
+      - name: Validate Compose configuration
+        run: docker compose config --quiet
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Start services
+        run: docker compose up -d
+
+      - name: Wait for services to become healthy
+        run: |
+          timeout 60s bash -c '
+            until docker compose ps --format "{{.Service}} {{.Status}}" | \
+              grep -q "nginx.*(healthy)"; do
+              sleep 2
+            done
+          '
+
+      - name: Run application validation
+        run: python3 validate.py
