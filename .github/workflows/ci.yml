@@ -31,7 +31,7 @@ jobs:
         run: docker compose up -d
 
       - name: Show service diagnostics
-        if: failure()
+        if: always()
         run: |
           docker compose ps
           docker compose logs postgres --tail=50
