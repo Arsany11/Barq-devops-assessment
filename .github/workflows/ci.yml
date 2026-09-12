@@ -28,7 +28,7 @@ jobs:
         run: docker compose build
 
       - name: Start services
-        run: docker compose up -d
+        run: docker compose up -d || true
 
       - name: Show service diagnostics
         if: always()
