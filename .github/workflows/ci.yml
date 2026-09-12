@@ -30,6 +30,12 @@ jobs:
       - name: Start services
         run: docker compose up -d
 
+      - name: Show service diagnostics
+        if: failure()
+        run: |
+          docker compose ps
+          docker compose logs postgres --tail=50
+
       - name: Wait for services to become healthy
         run: |
           timeout 60s bash -c '
