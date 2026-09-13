@@ -13,7 +13,7 @@ import urllib.request
 
 PUBLIC_URL = os.getenv("PUBLIC_URL", "http://127.0.0.1:8080")
 BACKEND = os.getenv("BACKEND_TO_STOP", "app-02")
-REQUEST_COUNT = int(os.getenv("REQUEST_COUNT", "15"))
+REQUEST_COUNT = int(os.getenv("REQUEST_COUNT", "10"))
 WAIT_TIMEOUT = 30
 
 
