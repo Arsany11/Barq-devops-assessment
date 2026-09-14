@@ -7,7 +7,26 @@ import urllib.request
 import urllib.error
 import json
 import subprocess
+import os
 failures = 0
+
+def public_base_url():
+    try:
+        result = subprocess.run(
+            ["docker", "compose", "port", "nginx", "80"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=True,
+        )
+        published_address = result.stdout.strip().splitlines()[0]
+        port = published_address.rsplit(":", 1)[1]
+    except (IndexError, subprocess.SubprocessError, subprocess.TimeoutExpired):
+        port = os.getenv("PUBLIC_PORT", "8080")
+
+    return f"http://localhost:{port}"
+
+PUBLIC_BASE_URL = public_base_url()
 
 def check(name, condition):
     global failures
@@ -21,7 +40,7 @@ def check(name, condition):
 def http_check(path, expected_status=200):
     try:
         with urllib.request.urlopen(
-            f"http://localhost:8090{path}",
+            f"{PUBLIC_BASE_URL}{path}",
             timeout=3,
         ) as response:
             return response.status == expected_status
@@ -31,7 +50,7 @@ def http_check(path, expected_status=200):
 def get_instance():
     try:
         with urllib.request.urlopen(
-            "http://localhost:8090/instance",
+            f"{PUBLIC_BASE_URL}/instance",
             timeout=3,
         ) as response:
             data = json.loads(response.read().decode())

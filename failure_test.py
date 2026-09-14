@@ -11,7 +11,28 @@ import time
 import urllib.error
 import urllib.request
 
-PUBLIC_URL = os.getenv("PUBLIC_URL", "http://127.0.0.1:8080")
+def public_url():
+    configured_url = os.getenv("PUBLIC_URL")
+    if configured_url:
+        return configured_url.rstrip("/")
+
+    try:
+        result = subprocess.run(
+            ["docker", "compose", "port", "nginx", "80"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=True,
+        )
+        published_address = result.stdout.strip().splitlines()[0]
+        port = published_address.rsplit(":", 1)[1]
+    except (IndexError, subprocess.SubprocessError, subprocess.TimeoutExpired):
+        port = os.getenv("PUBLIC_PORT", "8080")
+
+    return f"http://127.0.0.1:{port}"
+
+
+PUBLIC_URL = public_url()
 BACKEND = os.getenv("BACKEND_TO_STOP", "app-02")
 REQUEST_COUNT = int(os.getenv("REQUEST_COUNT", "10"))
 WAIT_TIMEOUT = 30
