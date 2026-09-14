@@ -21,7 +21,7 @@ def check(name, condition):
 def http_check(path, expected_status=200):
     try:
         with urllib.request.urlopen(
-            f"http://localhost:8080{path}",
+            f"http://localhost:8090{path}",
             timeout=3,
         ) as response:
             return response.status == expected_status
@@ -31,7 +31,7 @@ def http_check(path, expected_status=200):
 def get_instance():
     try:
         with urllib.request.urlopen(
-            "http://localhost:8080/instance",
+            "http://localhost:8090/instance",
             timeout=3,
         ) as response:
             data = json.loads(response.read().decode())
