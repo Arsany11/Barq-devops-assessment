@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: barq-config
+data:
+  APP_HOST: "0.0.0.0"
+  APP_PORT: "8080"
+  APP_MESSAGE: "Welcome to BARQ Systems"
+  REDIS_URL: "redis://redis:6379/0"
