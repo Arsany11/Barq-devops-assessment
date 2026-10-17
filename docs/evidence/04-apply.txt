@@ -1,0 +1,92 @@
+[0m[1maws_vpc.main: Creating...[0m[0m
+[0m[1maws_key_pair.main: Creating...[0m[0m
+[0m[1maws_iam_role.node: Creating...[0m[0m
+[0m[1maws_key_pair.main: Creation complete after 1s [id=barq-key][0m
+[0m[1maws_iam_role.node: Creation complete after 2s [id=barq-node-role][0m
+[0m[1maws_iam_role_policy_attachment.ssm: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.ebs_csi: Creating...[0m[0m
+[0m[1maws_iam_instance_profile.node: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.ssm: Creation complete after 1s [id=barq-node-role-20261017120309484200000001][0m
+[0m[1maws_iam_role_policy_attachment.ebs_csi: Creation complete after 1s [id=barq-node-role-20261017120309873400000002][0m
+[0m[1maws_vpc.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_iam_instance_profile.node: Creation complete after 8s [id=barq-node-profile][0m
+[0m[1maws_vpc.main: Creation complete after 15s [id=vpc-086d85be1edf58ebf][0m
+[0m[1maws_security_group.rds: Creating...[0m[0m
+[0m[1maws_subnet.db[1]: Creating...[0m[0m
+[0m[1maws_route_table.private: Creating...[0m[0m
+[0m[1maws_security_group.nodes: Creating...[0m[0m
+[0m[1maws_subnet.db[0]: Creating...[0m[0m
+[0m[1maws_internet_gateway.igw: Creating...[0m[0m
+[0m[1maws_subnet.public: Creating...[0m[0m
+[0m[1maws_subnet.db[1]: Creation complete after 1s [id=subnet-01261fe4301ae8fd2][0m
+[0m[1maws_internet_gateway.igw: Creation complete after 1s [id=igw-0fa9097e30c3acb82][0m
+[0m[1maws_route_table.public: Creating...[0m[0m
+[0m[1maws_subnet.db[0]: Creation complete after 1s [id=subnet-09e23e710e9284d95][0m
+[0m[1maws_db_subnet_group.main: Creating...[0m[0m
+[0m[1maws_route_table.private: Creation complete after 1s [id=rtb-087b8a265da0113bd][0m
+[0m[1maws_route_table_association.db[0]: Creating...[0m[0m
+[0m[1maws_route_table_association.db[1]: Creating...[0m[0m
+[0m[1maws_route_table_association.db[1]: Creation complete after 1s [id=rtbassoc-0b8172ad0c97a85bf][0m
+[0m[1maws_route_table_association.db[0]: Creation complete after 1s [id=rtbassoc-0f90746b7ab3913b8][0m
+[0m[1maws_security_group.rds: Creation complete after 3s [id=sg-066057428d39a538f][0m
+[0m[1maws_db_subnet_group.main: Creation complete after 3s [id=barq-db-subnets][0m
+[0m[1maws_route_table.public: Creation complete after 3s [id=rtb-09a8d1453d386c277][0m
+[0m[1maws_db_instance.main: Creating...[0m[0m
+[0m[1maws_security_group.nodes: Creation complete after 4s [id=sg-08e7ce18d564165ac][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"]: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["kubelet"]: Creating...[0m[0m
+[0m[1maws_vpc_security_group_egress_rule.nodes_all: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"]: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["etcd"]: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.ssh: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.postgres_from_nodes: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.app_entry: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"]: Creation complete after 0s [id=sgr-098af95d40ec76cc8][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["k8s_api"]: Creating...[0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.ssh: Creation complete after 0s [id=sgr-05dd95fe398843df8][0m
+[0m[1maws_vpc_security_group_egress_rule.nodes_all: Creation complete after 0s [id=sgr-0c6dd105195affa36][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"]: Creation complete after 0s [id=sgr-089225a6fd1ae0c8f][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["etcd"]: Creation complete after 0s [id=sgr-04bb3f24a15f9bc4c][0m
+[0m[1maws_vpc_security_group_ingress_rule.postgres_from_nodes: Creation complete after 0s [id=sgr-0fd6a38a5e48f1cd2][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["kubelet"]: Creation complete after 0s [id=sgr-013e3cbce2eb90c45][0m
+[0m[1maws_vpc_security_group_ingress_rule.app_entry: Creation complete after 0s [id=sgr-0410ed3cd48c324af][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["k8s_api"]: Creation complete after 0s [id=sgr-0440fa4ad72494df2][0m
+[0m[1maws_subnet.public: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public: Creation complete after 12s [id=subnet-03f08e55ef5ed6a2e][0m
+[0m[1maws_route_table_association.public: Creating...[0m[0m
+[0m[1maws_instance.node["control-plane"]: Creating...[0m[0m
+[0m[1maws_instance.node["worker"]: Creating...[0m[0m
+[0m[1maws_route_table_association.public: Creation complete after 1s [id=rtbassoc-04f6f94848f39ab59][0m
+[0m[1maws_db_instance.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [00m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [01m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [02m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [03m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [04m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [05m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [05m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still creating... [05m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Creation complete after 5m29s [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4][0m

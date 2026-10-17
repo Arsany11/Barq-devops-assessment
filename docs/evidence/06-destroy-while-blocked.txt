@@ -1,0 +1,846 @@
+[0m[1mdata.aws_ami.ubuntu: Reading...[0m[0m
+[0m[1maws_vpc.main: Refreshing state... [id=vpc-086d85be1edf58ebf][0m
+[0m[1maws_key_pair.main: Refreshing state... [id=barq-key][0m
+[0m[1mdata.aws_iam_policy_document.ec2_assume: Reading...[0m[0m
+[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.ec2_assume: Read complete after 0s [id=2851119427][0m
+[0m[1maws_iam_role.node: Refreshing state... [id=barq-node-role][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 1s [id=eu-central-1][0m
+[0m[1mdata.aws_ami.ubuntu: Read complete after 1s [id=ami-047977566a9d210f8][0m
+[0m[1maws_iam_role_policy_attachment.ebs_csi: Refreshing state... [id=barq-node-role-20261017120309873400000002][0m
+[0m[1maws_iam_instance_profile.node: Refreshing state... [id=barq-node-profile][0m
+[0m[1maws_iam_role_policy_attachment.ssm: Refreshing state... [id=barq-node-role-20261017120309484200000001][0m
+[0m[1maws_route_table.private: Refreshing state... [id=rtb-087b8a265da0113bd][0m
+[0m[1maws_internet_gateway.igw: Refreshing state... [id=igw-0fa9097e30c3acb82][0m
+[0m[1maws_subnet.public: Refreshing state... [id=subnet-03f08e55ef5ed6a2e][0m
+[0m[1maws_subnet.db[1]: Refreshing state... [id=subnet-01261fe4301ae8fd2][0m
+[0m[1maws_subnet.db[0]: Refreshing state... [id=subnet-09e23e710e9284d95][0m
+[0m[1maws_security_group.nodes: Refreshing state... [id=sg-08e7ce18d564165ac][0m
+[0m[1maws_security_group.rds: Refreshing state... [id=sg-066057428d39a538f][0m
+[0m[1maws_vpc_security_group_egress_rule.nodes_all: Refreshing state... [id=sgr-0c6dd105195affa36][0m
+[0m[1maws_vpc_security_group_ingress_rule.ssh: Refreshing state... [id=sgr-05dd95fe398843df8][0m
+[0m[1maws_vpc_security_group_ingress_rule.app_entry: Refreshing state... [id=sgr-0410ed3cd48c324af][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"]: Refreshing state... [id=sgr-089225a6fd1ae0c8f][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["kubelet"]: Refreshing state... [id=sgr-013e3cbce2eb90c45][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["k8s_api"]: Refreshing state... [id=sgr-0440fa4ad72494df2][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"]: Refreshing state... [id=sgr-098af95d40ec76cc8][0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["etcd"]: Refreshing state... [id=sgr-04bb3f24a15f9bc4c][0m
+[0m[1maws_vpc_security_group_ingress_rule.postgres_from_nodes: Refreshing state... [id=sgr-0fd6a38a5e48f1cd2][0m
+[0m[1maws_route_table.public: Refreshing state... [id=rtb-09a8d1453d386c277][0m
+[0m[1maws_route_table_association.db[1]: Refreshing state... [id=rtbassoc-0b8172ad0c97a85bf][0m
+[0m[1maws_db_subnet_group.main: Refreshing state... [id=barq-db-subnets][0m
+[0m[1maws_route_table_association.db[0]: Refreshing state... [id=rtbassoc-0f90746b7ab3913b8][0m
+[0m[1maws_route_table_association.public: Refreshing state... [id=rtbassoc-04f6f94848f39ab59][0m
+[0m[1maws_db_instance.main: Refreshing state... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_db_instance.main[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_db_instance" "main" {
+      [31m-[0m[0m address                               = "barq-db.c1uwsk24qeq9.eu-central-1.rds.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m allocated_storage                     = 20 [90m-> null[0m[0m
+      [31m-[0m[0m apply_immediately                     = false [90m-> null[0m[0m
+      [31m-[0m[0m arn                                   = "arn:aws:rds:eu-central-1:134129016483:db:barq-db" [90m-> null[0m[0m
+      [31m-[0m[0m auto_minor_version_upgrade            = true [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                     = "eu-central-1a" [90m-> null[0m[0m
+      [31m-[0m[0m backup_retention_period               = 0 [90m-> null[0m[0m
+      [31m-[0m[0m backup_target                         = "region" [90m-> null[0m[0m
+      [31m-[0m[0m backup_window                         = "20:59-21:29" [90m-> null[0m[0m
+      [31m-[0m[0m ca_cert_identifier                    = "rds-ca-rsa2048-g1" [90m-> null[0m[0m
+      [31m-[0m[0m copy_tags_to_snapshot                 = false [90m-> null[0m[0m
+      [31m-[0m[0m customer_owned_ip_enabled             = false [90m-> null[0m[0m
+      [31m-[0m[0m database_insights_mode                = "standard" [90m-> null[0m[0m
+      [31m-[0m[0m db_name                               = "barq_tasks" [90m-> null[0m[0m
+      [31m-[0m[0m db_subnet_group_name                  = "barq-db-subnets" [90m-> null[0m[0m
+      [31m-[0m[0m dedicated_log_volume                  = false [90m-> null[0m[0m
+      [31m-[0m[0m delete_automated_backups              = true [90m-> null[0m[0m
+      [31m-[0m[0m deletion_protection                   = false [90m-> null[0m[0m
+      [31m-[0m[0m domain_dns_ips                        = [] [90m-> null[0m[0m
+      [31m-[0m[0m enabled_cloudwatch_logs_exports       = [] [90m-> null[0m[0m
+      [31m-[0m[0m endpoint                              = "barq-db.c1uwsk24qeq9.eu-central-1.rds.amazonaws.com:5432" [90m-> null[0m[0m
+      [31m-[0m[0m engine                                = "postgres" [90m-> null[0m[0m
+      [31m-[0m[0m engine_lifecycle_support              = "open-source-rds-extended-support" [90m-> null[0m[0m
+      [31m-[0m[0m engine_version                        = "16" [90m-> null[0m[0m
+      [31m-[0m[0m engine_version_actual                 = "16.13" [90m-> null[0m[0m
+      [31m-[0m[0m hosted_zone_id                        = "Z1RLNUO7B9Q6NB" [90m-> null[0m[0m
+      [31m-[0m[0m iam_database_authentication_enabled   = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                    = "db-3XCFJUXLC3PGALMPGHLHWHXFC4" [90m-> null[0m[0m
+      [31m-[0m[0m identifier                            = "barq-db" [90m-> null[0m[0m
+      [31m-[0m[0m instance_class                        = "db.t3.micro" [90m-> null[0m[0m
+      [31m-[0m[0m iops                                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m kms_key_id                            = "arn:aws:kms:eu-central-1:134129016483:key/f39c7c94-d0c8-4e62-bc08-e89b181e5bb5" [90m-> null[0m[0m
+      [31m-[0m[0m license_model                         = "postgresql-license" [90m-> null[0m[0m
+      [31m-[0m[0m listener_endpoint                     = [] [90m-> null[0m[0m
+      [31m-[0m[0m maintenance_window                    = "sat:04:15-sat:04:45" [90m-> null[0m[0m
+      [31m-[0m[0m master_user_secret                    = [] [90m-> null[0m[0m
+      [31m-[0m[0m max_allocated_storage                 = 0 [90m-> null[0m[0m
+      [31m-[0m[0m monitoring_interval                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m multi_az                              = false [90m-> null[0m[0m
+      [31m-[0m[0m network_type                          = "IPV4" [90m-> null[0m[0m
+      [31m-[0m[0m option_group_name                     = "default:postgres-16" [90m-> null[0m[0m
+      [31m-[0m[0m parameter_group_name                  = "default.postgres16" [90m-> null[0m[0m
+      [31m-[0m[0m password                              = (sensitive value) [90m-> null[0m[0m
+      [31m-[0m[0m password_wo                           = (write-only attribute) [90m-> null[0m[0m
+      [31m-[0m[0m performance_insights_enabled          = false [90m-> null[0m[0m
+      [31m-[0m[0m performance_insights_retention_period = 0 [90m-> null[0m[0m
+      [31m-[0m[0m port                                  = 5432 [90m-> null[0m[0m
+      [31m-[0m[0m publicly_accessible                   = false [90m-> null[0m[0m
+      [31m-[0m[0m replicas                              = [] [90m-> null[0m[0m
+      [31m-[0m[0m resource_id                           = "db-3XCFJUXLC3PGALMPGHLHWHXFC4" [90m-> null[0m[0m
+      [31m-[0m[0m skip_final_snapshot                   = true [90m-> null[0m[0m
+      [31m-[0m[0m status                                = "available" [90m-> null[0m[0m
+      [31m-[0m[0m storage_encrypted                     = true [90m-> null[0m[0m
+      [31m-[0m[0m storage_throughput                    = 0 [90m-> null[0m[0m
+      [31m-[0m[0m storage_type                          = "gp2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                  = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                              = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m username                              = "barq_app" [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids                = [
+          [31m-[0m[0m "sg-066057428d39a538f",
+        ] [90m-> null[0m[0m
+        [90m# (15 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_db_subnet_group.main[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_db_subnet_group" "main" {
+      [31m-[0m[0m arn                     = "arn:aws:rds:eu-central-1:134129016483:subgrp:barq-db-subnets" [90m-> null[0m[0m
+      [31m-[0m[0m description             = "Managed by Terraform" [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "barq-db-subnets" [90m-> null[0m[0m
+      [31m-[0m[0m name                    = "barq-db-subnets" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_ids              = [
+          [31m-[0m[0m "subnet-01261fe4301ae8fd2",
+          [31m-[0m[0m "subnet-09e23e710e9284d95",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m supported_network_types = [
+          [31m-[0m[0m "IPV4",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags                    = {
+          [31m-[0m[0m "Name" = "barq-db-subnets"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-db-subnets"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                  = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_iam_instance_profile.node[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_instance_profile" "node" {
+      [31m-[0m[0m arn         = "arn:aws:iam::134129016483:instance-profile/barq-node-profile" [90m-> null[0m[0m
+      [31m-[0m[0m create_date = "2026-10-17T12:03:09Z" [90m-> null[0m[0m
+      [31m-[0m[0m id          = "barq-node-profile" [90m-> null[0m[0m
+      [31m-[0m[0m name        = "barq-node-profile" [90m-> null[0m[0m
+      [31m-[0m[0m path        = "/" [90m-> null[0m[0m
+      [31m-[0m[0m role        = "barq-node-role" [90m-> null[0m[0m
+      [31m-[0m[0m tags        = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all    = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m unique_id   = "AIPAR6OVWL2RXNUJI5SCG" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_iam_role.node[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role" "node" {
+      [31m-[0m[0m arn                   = "arn:aws:iam::134129016483:role/barq-node-role" [90m-> null[0m[0m
+      [31m-[0m[0m assume_role_policy    = jsonencode(
+            {
+              [31m-[0m[0m Statement = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m Action    = "sts:AssumeRole"
+                      [31m-[0m[0m Effect    = "Allow"
+                      [31m-[0m[0m Principal = {
+                          [31m-[0m[0m Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              [31m-[0m[0m Version   = "2012-10-17"
+            }
+        ) [90m-> null[0m[0m
+      [31m-[0m[0m create_date           = "2026-10-17T12:03:07Z" [90m-> null[0m[0m
+      [31m-[0m[0m force_detach_policies = false [90m-> null[0m[0m
+      [31m-[0m[0m id                    = "barq-node-role" [90m-> null[0m[0m
+      [31m-[0m[0m managed_policy_arns   = [
+          [31m-[0m[0m "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+          [31m-[0m[0m "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m max_session_duration  = 3600 [90m-> null[0m[0m
+      [31m-[0m[0m name                  = "barq-node-role" [90m-> null[0m[0m
+      [31m-[0m[0m path                  = "/" [90m-> null[0m[0m
+      [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all              = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m unique_id             = "AROAR6OVWL2RWIWJUU3S2" [90m-> null[0m[0m
+        [90m# (3 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_iam_role_policy_attachment.ebs_csi[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "ebs_csi" {
+      [31m-[0m[0m id         = "barq-node-role-20261017120309873400000002" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "barq-node-role" [90m-> null[0m[0m
+    }
+
+[1m  # aws_iam_role_policy_attachment.ssm[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_iam_role_policy_attachment" "ssm" {
+      [31m-[0m[0m id         = "barq-node-role-20261017120309484200000001" [90m-> null[0m[0m
+      [31m-[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore" [90m-> null[0m[0m
+      [31m-[0m[0m role       = "barq-node-role" [90m-> null[0m[0m
+    }
+
+[1m  # aws_internet_gateway.igw[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_internet_gateway" "igw" {
+      [31m-[0m[0m arn      = "arn:aws:ec2:eu-central-1:134129016483:internet-gateway/igw-0fa9097e30c3acb82" [90m-> null[0m[0m
+      [31m-[0m[0m id       = "igw-0fa9097e30c3acb82" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m tags     = {
+          [31m-[0m[0m "Name" = "barq-igw"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-igw"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id   = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+    }
+
+[1m  # aws_key_pair.main[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_key_pair" "main" {
+      [31m-[0m[0m arn             = "arn:aws:ec2:eu-central-1:134129016483:key-pair/barq-key" [90m-> null[0m[0m
+      [31m-[0m[0m fingerprint     = "NhaTSHJTFDUpQ9Bq47RfhB3giMDunD0N1OPaAncC8NE=" [90m-> null[0m[0m
+      [31m-[0m[0m id              = "barq-key" [90m-> null[0m[0m
+      [31m-[0m[0m key_name        = "barq-key" [90m-> null[0m[0m
+      [31m-[0m[0m key_pair_id     = "key-028512192b0e58fc6" [90m-> null[0m[0m
+      [31m-[0m[0m key_type        = "ed25519" [90m-> null[0m[0m
+      [31m-[0m[0m public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOz8fngWRH2kh8HjQAZliOpoNDhd2F0cLsE/r1V3OeXD root@k8s-master" [90m-> null[0m[0m
+      [31m-[0m[0m tags            = {} [90m-> null[0m[0m
+      [31m-[0m[0m tags_all        = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_route_table.private[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "private" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:eu-central-1:134129016483:route-table/rtb-087b8a265da0113bd" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-087b8a265da0113bd" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m route            = [] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "barq-private-rt"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-private-rt"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+    }
+
+[1m  # aws_route_table.public[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "public" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:eu-central-1:134129016483:route-table/rtb-09a8d1453d386c277" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-09a8d1453d386c277" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m route            = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_block                 = "0.0.0.0/0"
+              [31m-[0m[0m gateway_id                 = "igw-0fa9097e30c3acb82"
+                [90m# (11 unchanged attributes hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "barq-public-rt"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-public-rt"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+    }
+
+[1m  # aws_route_table_association.db[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "db" {
+      [31m-[0m[0m id             = "rtbassoc-0f90746b7ab3913b8" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-087b8a265da0113bd" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-09e23e710e9284d95" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_route_table_association.db[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "db" {
+      [31m-[0m[0m id             = "rtbassoc-0b8172ad0c97a85bf" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-087b8a265da0113bd" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-01261fe4301ae8fd2" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_route_table_association.public[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "public" {
+      [31m-[0m[0m id             = "rtbassoc-04f6f94848f39ab59" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-09a8d1453d386c277" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-03f08e55ef5ed6a2e" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_security_group.nodes[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "nodes" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:134129016483:security-group/sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Kubernetes nodes" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "Outbound for package installs and image pulls"
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "-1"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 0
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "154.177.174.181/32",
+                ]
+              [31m-[0m[0m description      = "Application entry point NodePort"
+              [31m-[0m[0m from_port        = 30080
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 30080
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "154.177.174.181/32",
+                ]
+              [31m-[0m[0m description      = "SSH from approved IP"
+              [31m-[0m[0m from_port        = 22
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 22
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "etcd"
+              [31m-[0m[0m from_port        = 2379
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = true
+              [31m-[0m[0m to_port          = 2380
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "flannel_vxlan"
+              [31m-[0m[0m from_port        = 8472
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "udp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = true
+              [31m-[0m[0m to_port          = 8472
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "k8s_api"
+              [31m-[0m[0m from_port        = 6443
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = true
+              [31m-[0m[0m to_port          = 6443
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "kubelet"
+              [31m-[0m[0m from_port        = 10250
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = true
+              [31m-[0m[0m to_port          = 10250
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "nodeport_range"
+              [31m-[0m[0m from_port        = 30000
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = true
+              [31m-[0m[0m to_port          = 32767
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "barq-nodes" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "barq-nodes-sg"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-nodes-sg"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_security_group.rds[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "rds" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:134129016483:security-group/sg-066057428d39a538f" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "PostgreSQL from application nodes only" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-066057428d39a538f" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "PostgreSQL from application nodes only"
+              [31m-[0m[0m from_port        = 5432
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = [
+                  [31m-[0m[0m "sg-08e7ce18d564165ac",
+                ]
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 5432
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "barq-rds" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "barq-rds-sg"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-rds-sg"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.db[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "db" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:134129016483:subnet/subnet-09e23e710e9284d95" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.10.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-09e23e710e9284d95" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "barq-db-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-db-1"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.db[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "db" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:134129016483:subnet/subnet-01261fe4301ae8fd2" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1b" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az3" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.11.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-01261fe4301ae8fd2" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "barq-db-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-db-2"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_subnet.public[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:eu-central-1:134129016483:subnet/subnet-03f08e55ef5ed6a2e" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "eu-central-1a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "euc1-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.1.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-03f08e55ef5ed6a2e" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "barq-public"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-public"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_vpc.main[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc" "main" {
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:eu-central-1:134129016483:vpc/vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+      [31m-[0m[0m assign_generated_ipv6_cidr_block     = false [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                           = "10.0.0.0/16" [90m-> null[0m[0m
+      [31m-[0m[0m default_network_acl_id               = "acl-06efcc77d125c29a5" [90m-> null[0m[0m
+      [31m-[0m[0m default_route_table_id               = "rtb-00e54c05efe369feb" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id            = "sg-0ee82db4c79d17eaf" [90m-> null[0m[0m
+      [31m-[0m[0m dhcp_options_id                      = "dopt-0fbb3d03c77f91642" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_hostnames                 = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_support                   = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_network_address_usage_metrics = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "vpc-086d85be1edf58ebf" [90m-> null[0m[0m
+      [31m-[0m[0m instance_tenancy                     = "default" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_netmask_length                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m main_route_table_id                  = "rtb-00e54c05efe369feb" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                             = "134129016483" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "barq-vpc"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Name"      = "barq-vpc"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_egress_rule.nodes_all[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_egress_rule" "nodes_all" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-0c6dd105195affa36" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Outbound for package installs and image pulls" [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-0c6dd105195affa36" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "-1" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-0c6dd105195affa36" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.app_entry[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "app_entry" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-0410ed3cd48c324af" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "154.177.174.181/32" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Application entry point NodePort" [90m-> null[0m[0m
+      [31m-[0m[0m from_port              = 30080 [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-0410ed3cd48c324af" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-0410ed3cd48c324af" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                = 30080 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.nodes_self["etcd"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "nodes_self" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-04bb3f24a15f9bc4c" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "etcd" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 2379 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-04bb3f24a15f9bc4c" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-04bb3f24a15f9bc4c" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 2380 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "nodes_self" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-089225a6fd1ae0c8f" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "flannel_vxlan" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 8472 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-089225a6fd1ae0c8f" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "udp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-089225a6fd1ae0c8f" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 8472 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.nodes_self["k8s_api"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "nodes_self" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-0440fa4ad72494df2" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "k8s_api" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 6443 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-0440fa4ad72494df2" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-0440fa4ad72494df2" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 6443 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.nodes_self["kubelet"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "nodes_self" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-013e3cbce2eb90c45" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "kubelet" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 10250 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-013e3cbce2eb90c45" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-013e3cbce2eb90c45" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 10250 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "nodes_self" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-098af95d40ec76cc8" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "nodeport_range" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 30000 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-098af95d40ec76cc8" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-098af95d40ec76cc8" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 32767 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.postgres_from_nodes[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "postgres_from_nodes" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-0fd6a38a5e48f1cd2" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "PostgreSQL from application nodes only" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 5432 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-0fd6a38a5e48f1cd2" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-066057428d39a538f" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-0fd6a38a5e48f1cd2" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 5432 [90m-> null[0m[0m
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.ssh[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "ssh" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:eu-central-1:134129016483:security-group-rule/sgr-05dd95fe398843df8" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "154.177.174.181/32" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "SSH from approved IP" [90m-> null[0m[0m
+      [31m-[0m[0m from_port              = 22 [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-05dd95fe398843df8" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-08e7ce18d564165ac" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-05dd95fe398843df8" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Env"       = "dev"
+          [31m-[0m[0m "ManagedBy" = "terraform"
+          [31m-[0m[0m "Owner"     = "arsany"
+          [31m-[0m[0m "Project"   = "barq"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m to_port                = 22 [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 28 to destroy.
+
+Changes to Outputs:
+  [31m-[0m[0m rds_endpoint = "barq-db.c1uwsk24qeq9.eu-central-1.rds.amazonaws.com" [90m-> null[0m[0m
+[0m[1m
+Do you really want to destroy all resources?[0m
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  [1mEnter a value:[0m [0m
+[0m[1maws_route_table_association.db[0]: Destroying... [id=rtbassoc-0f90746b7ab3913b8][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.postgres_from_nodes: Destroying... [id=sgr-0fd6a38a5e48f1cd2][0m[0m
+[0m[1maws_iam_role_policy_attachment.ssm: Destroying... [id=barq-node-role-20261017120309484200000001][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["k8s_api"]: Destroying... [id=sgr-0440fa4ad72494df2][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["etcd"]: Destroying... [id=sgr-04bb3f24a15f9bc4c][0m[0m
+[0m[1maws_vpc_security_group_egress_rule.nodes_all: Destroying... [id=sgr-0c6dd105195affa36][0m[0m
+[0m[1maws_route_table_association.db[1]: Destroying... [id=rtbassoc-0b8172ad0c97a85bf][0m[0m
+[0m[1maws_route_table_association.public: Destroying... [id=rtbassoc-04f6f94848f39ab59][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["kubelet"]: Destroying... [id=sgr-013e3cbce2eb90c45][0m[0m
+[0m[1maws_key_pair.main: Destroying... [id=barq-key][0m[0m
+[0m[1maws_key_pair.main: Destruction complete after 1s[0m
+[0m[1maws_iam_role_policy_attachment.ebs_csi: Destroying... [id=barq-node-role-20261017120309873400000002][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["kubelet"]: Destruction complete after 1s[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"]: Destroying... [id=sgr-098af95d40ec76cc8][0m[0m
+[0m[1maws_iam_role_policy_attachment.ssm: Destruction complete after 1s[0m
+[0m[1maws_iam_instance_profile.node: Destroying... [id=barq-node-profile][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["k8s_api"]: Destruction complete after 1s[0m
+[0m[1maws_vpc_security_group_ingress_rule.postgres_from_nodes: Destruction complete after 1s[0m
+[0m[1maws_vpc_security_group_ingress_rule.app_entry: Destroying... [id=sgr-0410ed3cd48c324af][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.ssh: Destroying... [id=sgr-05dd95fe398843df8][0m[0m
+[0m[1maws_route_table_association.public: Destruction complete after 1s[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"]: Destroying... [id=sgr-089225a6fd1ae0c8f][0m[0m
+[0m[1maws_vpc_security_group_egress_rule.nodes_all: Destruction complete after 1s[0m
+[0m[1maws_route_table_association.db[0]: Destruction complete after 1s[0m
+[0m[1maws_db_instance.main: Destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4][0m[0m
+[0m[1maws_route_table.public: Destroying... [id=rtb-09a8d1453d386c277][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["etcd"]: Destruction complete after 1s[0m
+[0m[1maws_subnet.public: Destroying... [id=subnet-03f08e55ef5ed6a2e][0m[0m
+[0m[1maws_iam_role_policy_attachment.ebs_csi: Destruction complete after 0s[0m
+[0m[1maws_vpc_security_group_ingress_rule.app_entry: Destruction complete after 0s[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["flannel_vxlan"]: Destruction complete after 0s[0m
+[0m[1maws_route_table_association.db[1]: Destruction complete after 1s[0m
+[0m[1maws_route_table.private: Destroying... [id=rtb-087b8a265da0113bd][0m[0m
+[0m[1maws_vpc_security_group_ingress_rule.ssh: Destruction complete after 0s[0m
+[0m[1maws_vpc_security_group_ingress_rule.nodes_self["nodeport_range"]: Destruction complete after 0s[0m
+[0m[1maws_security_group.nodes: Destroying... [id=sg-08e7ce18d564165ac][0m[0m
+[0m[1maws_subnet.public: Destruction complete after 1s[0m
+[0m[1maws_iam_instance_profile.node: Destruction complete after 1s[0m
+[0m[1maws_iam_role.node: Destroying... [id=barq-node-role][0m[0m
+[0m[1maws_route_table.public: Destruction complete after 1s[0m
+[0m[1maws_internet_gateway.igw: Destroying... [id=igw-0fa9097e30c3acb82][0m[0m
+[0m[1maws_security_group.nodes: Destruction complete after 0s[0m
+[0m[1maws_route_table.private: Destruction complete after 1s[0m
+[0m[1maws_internet_gateway.igw: Destruction complete after 1s[0m
+[0m[1maws_iam_role.node: Destruction complete after 1s[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 00m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 00m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 00m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 00m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 00m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m00s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m10s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m20s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m30s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m40s elapsed][0m[0m
+[0m[1maws_db_instance.main: Still destroying... [id=db-3XCFJUXLC3PGALMPGHLHWHXFC4, 01m50s elapsed][0m[0m
+[0m[1maws_db_instance.main: Destruction complete after 1m53s[0m
+[0m[1maws_db_subnet_group.main: Destroying... [id=barq-db-subnets][0m[0m
+[0m[1maws_security_group.rds: Destroying... [id=sg-066057428d39a538f][0m[0m
+[0m[1maws_db_subnet_group.main: Destruction complete after 1s[0m
+[0m[1maws_subnet.db[1]: Destroying... [id=subnet-01261fe4301ae8fd2][0m[0m
+[0m[1maws_subnet.db[0]: Destroying... [id=subnet-09e23e710e9284d95][0m[0m
+[0m[1maws_subnet.db[0]: Destruction complete after 2s[0m
+[0m[1maws_subnet.db[1]: Destruction complete after 2s[0m
+[0m[1maws_security_group.rds: Destruction complete after 3s[0m
+[0m[1maws_vpc.main: Destroying... [id=vpc-086d85be1edf58ebf][0m[0m
+[0m[1maws_vpc.main: Destruction complete after 2s[0m
+[0m[1m[32m
+Destroy complete! Resources: 28 destroyed.[0m

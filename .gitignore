@@ -10,3 +10,12 @@ evidence/local/
 .assessment/
 backups/
 *.dump
+*.tfstate
+*.tfstate.*
+.terraform/
+tfplan
+terraform.tfvars
+ansible/inventory.ini
+*.pem
+barq-key*
+k8s/secret.yaml

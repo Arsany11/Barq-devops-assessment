@@ -1,0 +1,4 @@
+owner            = "your-name"
+allowed_ssh_cidr = "203.0.113.10/32"   # your public IP + /32
+allowed_app_cidr = "203.0.113.10/32"
+db_password      = "CHANGE_ME_letters_digits_only"
