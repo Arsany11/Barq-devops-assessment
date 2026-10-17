@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: psql
+        image: postgres:16-alpine
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: barq-secrets
+              key: DATABASE_URL
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          if psql "$DATABASE_URL" -tAc "SELECT to_regclass('public.records')" | grep -q records; then
+            echo "table already exists, nothing to do"
+          else
+            psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f /sql/init.sql
+          fi
+        volumeMounts:
+        - name: sql
+          mountPath: /sql
+      volumes:
+      - name: sql
+        configMap:
+          name: barq-init-sql

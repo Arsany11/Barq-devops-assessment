@@ -23,7 +23,7 @@ spec:
                   app: barq-app
       containers:
       - name: app
-        image: barq-assessment-app-01:latest
+        image: arsany33/barq:v1
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:

@@ -4,7 +4,7 @@ metadata:
   name: redis-data
 spec:
   accessModes: [ReadWriteOnce]
-  storageClassName: local-path
+  storageClassName: ebs-sc
   resources:
     requests:
       storage: 1Gi
