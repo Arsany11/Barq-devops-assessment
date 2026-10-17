@@ -1,0 +1,190 @@
+---
+- name: Prepare all nodes
+  hosts: k8s
+  become: true
+  vars:
+    k8s_version: "1.31"
+  tasks:
+    - name: Install prerequisites
+      ansible.builtin.apt:
+        name: [apt-transport-https, ca-certificates, curl, gpg]
+        state: present
+        update_cache: true
+
+    - name: Disable swap now
+      ansible.builtin.command: swapoff -a
+      when: ansible_swaptotal_mb > 0
+
+    - name: Disable swap permanently
+      ansible.builtin.replace:
+        path: /etc/fstab
+        regexp: '^([^#\n].*\sswap\s.*)$'
+        replace: '# \1'
+
+    - name: Load kernel modules on boot
+      ansible.builtin.copy:
+        dest: /etc/modules-load.d/k8s.conf
+        content: |
+          overlay
+          br_netfilter
+
+    - name: Load kernel modules now
+      ansible.builtin.command: "modprobe {{ item }}"
+      loop: [overlay, br_netfilter]
+      changed_when: false
+
+    - name: Sysctl settings for Kubernetes
+      ansible.builtin.copy:
+        dest: /etc/sysctl.d/99-k8s.conf
+        content: |
+          net.bridge.bridge-nf-call-iptables = 1
+          net.bridge.bridge-nf-call-ip6tables = 1
+          net.ipv4.ip_forward = 1
+      notify: apply sysctl
+
+    - name: Install containerd
+      ansible.builtin.apt:
+        name: containerd
+        state: present
+
+    - name: Check whether containerd already uses systemd cgroups
+      ansible.builtin.command: grep -q 'SystemdCgroup = true' /etc/containerd/config.toml
+      register: cgroup_check
+      failed_when: false
+      changed_when: false
+
+    - name: Write default containerd config
+      ansible.builtin.shell: containerd config default > /etc/containerd/config.toml
+      when: cgroup_check.rc != 0
+
+    - name: Enable SystemdCgroup
+      ansible.builtin.replace:
+        path: /etc/containerd/config.toml
+        regexp: 'SystemdCgroup = false'
+        replace: 'SystemdCgroup = true'
+      notify: restart containerd
+
+    - name: Ensure containerd is running
+      ansible.builtin.service:
+        name: containerd
+        state: started
+        enabled: true
+
+    - name: Create apt keyring directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: "0755"
+
+    - name: Add Kubernetes apt key
+      ansible.builtin.shell: >
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/Release.key
+        | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      args:
+        creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+    - name: Add Kubernetes apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/ /"
+        filename: kubernetes
+        state: present
+
+    - name: Install kubelet, kubeadm and kubectl
+      ansible.builtin.apt:
+        name: [kubelet, kubeadm, kubectl]
+        state: present
+        update_cache: true
+
+    - name: Hold Kubernetes packages at their version
+      ansible.builtin.dpkg_selections:
+        name: "{{ item }}"
+        selection: hold
+      loop: [kubelet, kubeadm, kubectl]
+
+    - name: Enable kubelet
+      ansible.builtin.service:
+        name: kubelet
+        enabled: true
+
+  handlers:
+    - name: apply sysctl
+      ansible.builtin.command: sysctl --system
+    - name: restart containerd
+      ansible.builtin.service:
+        name: containerd
+        state: restarted
+
+- name: Initialize the control plane
+  hosts: control
+  become: true
+  vars:
+    kc: "kubectl --kubeconfig /etc/kubernetes/admin.conf"
+  tasks:
+    - name: kubeadm init (skipped when the cluster already exists)
+      ansible.builtin.command: >
+        kubeadm init
+        --apiserver-advertise-address={{ private_ip }}
+        --pod-network-cidr=10.244.0.0/16
+      args:
+        creates: /etc/kubernetes/admin.conf
+
+    - name: Create .kube directory for ubuntu
+      ansible.builtin.file:
+        path: /home/ubuntu/.kube
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Copy admin.conf for the ubuntu user
+      ansible.builtin.copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/ubuntu/.kube/config
+        remote_src: true
+        owner: ubuntu
+        group: ubuntu
+        mode: "0600"
+
+    - name: Apply the Flannel CNI
+      ansible.builtin.command: "{{ kc }} apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml"
+      register: flannel
+      changed_when: "'created' in flannel.stdout"
+
+    - name: Allow application pods on the control plane (remove the taint)
+      ansible.builtin.command: "{{ kc }} taint nodes --all node-role.kubernetes.io/control-plane-"
+      register: untaint
+      failed_when: false
+      changed_when: "'untainted' in untaint.stdout"
+
+    - name: Create the worker join command
+      ansible.builtin.command: kubeadm token create --print-join-command
+      register: join_out
+      changed_when: false
+
+    - name: Keep the join command for the worker play
+      ansible.builtin.set_fact:
+        join_cmd: "{{ join_out.stdout }}"
+
+- name: Join the worker
+  hosts: workers
+  become: true
+  tasks:
+    - name: kubeadm join (skipped when already joined)
+      ansible.builtin.command: "{{ hostvars[groups['control'][0]].join_cmd }}"
+      args:
+        creates: /etc/kubernetes/kubelet.conf
+
+- name: Verify the cluster
+  hosts: control
+  become: true
+  tasks:
+    - name: Wait until both nodes are Ready
+      ansible.builtin.command: kubectl --kubeconfig /etc/kubernetes/admin.conf get nodes --no-headers
+      register: nodes
+      until: nodes.stdout_lines | length == 2 and (nodes.stdout_lines | select('search', ' Ready ') | list | length == 2)
+      retries: 30
+      delay: 10
+      changed_when: false
+
+    - name: Show the nodes
+      ansible.builtin.debug:
+        var: nodes.stdout_lines
